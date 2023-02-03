@@ -1,0 +1,44 @@
+{
+	"info": {
+		"_postman_id": "774c1a5d-baf0-43cd-a210-a7f3192c8bd7",
+		"name": "k8s-sb-kafka-end-to-end",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:9091/api/publish",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"title\": \"t1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9091/api/publish",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"publish"
+					],
+					"query": [
+						{
+							"key": "message",
+							"value": "test3",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
