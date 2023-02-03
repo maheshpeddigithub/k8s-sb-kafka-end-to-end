@@ -1,34 +1,17 @@
-# k8s-sb-kafka-end-to-end
-
-ZooKeeper/Kafka Commands:
--------------------------
-
-export ZK_HOME=/f/dev/tools/apache-zookeeper-3.5.5-bin
-
-export KAFKA_HOME=/f/dev/tools/kafka_2.12-2.3.0
-
-$ZK_HOME/bin/zkServer.sh start
-
-$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties
-
-$KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic YEAR1
-
-$KAFKA_HOME/bin/kafka-topics.sh --list --zookeeper localhost:2181
-
-$KAFKA_HOME/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic my-topic
-
-$KAFKA_HOME/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic my-topic --from-beginning
-
-$KAFKA_HOME/bin/kafka-configs.sh --zookeeper localhost:2181 --entity-type topics --describe
-
-$KAFKA_HOME/bin/kafka-configs.sh --zookeeper localhost:2181 --entity-type topics --entity-name my-topic --describe
-
-cat my-topic-file.txt | $KAFKA_HOME/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic my-topic
-
-$KAFKA_HOME/bin/kafka-topics.sh --zookeeper localhost:2181 --alter --topic my-topic --partitions 2
-
-$KAFKA_HOME/bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic my-topic
-
-$KAFKA_HOME/bin/kafka-server-stop.sh $KAFKA_HOME/config/server.properties
-
-$ZK_HOME/bin/zkServer.sh stop
+# k8s-sb-kafka-end-to-end <br>
+ZooKeeper/Kafka Commands: <br>
+------------------------- <br>
+export KAFKA_HOME=~/dev/tools/kafka_2.12-3.3.2 <br>
+$KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties <br>
+$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties <br>
+$KAFKA_HOME/bin/kafka-topics.sh --list --bootstrap-server localhost:9092 <br>
+$KAFKA_HOME/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic message-topic <br>
+$KAFKA_HOME/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic message-topic --from-beginning <br>
+$KAFKA_HOME/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic message-topic <br>
+$KAFKA_HOME/bin/kafka-configs.sh --bootstrap-server localhost:9092 --entity-type topics --describe <br>
+$KAFKA_HOME/bin/kafka-configs.sh --bootstrap-server localhost:9092 --entity-type topics --entity-name message-topic --describe <br>
+cat message-topic-file.txt | $KAFKA_HOME/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic message-topic <br>
+$KAFKA_HOME/bin/kafka-topics.sh --bootstrap-server localhost:9092 --alter --topic message-topic --partitions 2 <br>
+$KAFKA_HOME/bin/kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic message-topic  <br>
+$KAFKA_HOME/bin/kafka-server-stop.sh $KAFKA_HOME/config/server.properties <br>
+$KAFKA_HOME/bin/zookeeper-server-stop.sh stop $KAFKA_HOME/config/zookeeper.properties <br>

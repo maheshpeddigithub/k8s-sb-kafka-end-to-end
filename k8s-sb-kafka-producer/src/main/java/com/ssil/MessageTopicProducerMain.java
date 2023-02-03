@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SchoolMessageProducerMain {
+public class MessageTopicProducerMain {
     public static void main(String[] args) {
-        SpringApplication.run(SchoolMessageProducerMain.class, args);
+        SpringApplication.run(MessageTopicProducerMain.class, args);
     }
 }
