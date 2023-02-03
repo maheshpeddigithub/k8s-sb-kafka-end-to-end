@@ -14,7 +14,7 @@ public class MessageTopicConsumer {
 
     private final Logger log = LoggerFactory.getLogger(MessageTopicConsumer.class);
 
-    @KafkaListener(topics = "message-topic", groupId = "group1")
+    @KafkaListener(topics = "${spring.kafka.consumer.topic-name}", groupId = "${spring.kafka.consumer.group-id}")
     public void consumeMessage(String message) throws IOException {
         log.info(String.format("$$ -> Consumed Message --> %s", message));
         Book book = (new ObjectMapper()).readValue(message, Book.class);
