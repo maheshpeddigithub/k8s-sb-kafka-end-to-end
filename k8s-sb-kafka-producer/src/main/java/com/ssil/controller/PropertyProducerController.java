@@ -1,8 +1,8 @@
 package com.ssil.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.ssil.model.Book;
-import com.ssil.service.MessageTopicProducer;
+import com.ssil.model.Property;
+import com.ssil.service.PropertyProducer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class MessageTopicController {
+public class PropertyProducerController {
 
-    private final MessageTopicProducer producer;
+    private final PropertyProducer producer;
 
-    public MessageTopicController(MessageTopicProducer producer) {
+    public PropertyProducerController(PropertyProducer producer) {
         this.producer = producer;
     }
 
     @PostMapping("/publish")
-    public ResponseEntity<Void> publishMessage(@RequestBody Book book) throws JsonProcessingException {
-        producer.publishMessage(book);
+    public ResponseEntity<Void> publishMessage(@RequestBody Property property) throws JsonProcessingException {
+        producer.publishMessage(property);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

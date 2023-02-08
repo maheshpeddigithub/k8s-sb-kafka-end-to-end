@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MessageTopicConsumerMain {
+public class PropertyProducerMain {
     public static void main(String[] args) {
-        SpringApplication.run(MessageTopicConsumerMain.class, args);
+        SpringApplication.run(PropertyProducerMain.class, args);
     }
 }
